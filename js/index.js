@@ -70,3 +70,105 @@ jQuery.expr[':'].contains = function(a, i, m) {
     return jQuery(a).text().toUpperCase()
         .indexOf(m[3].toUpperCase()) >= 0;
 };
+
+// Función para manejar el inicio de sesión
+function iniciarSesion() {
+    var usernameInput = document.getElementById('usernameLogin');
+    var passwordInput = document.getElementById('passwordLogin');
+    var mensajeElement = document.getElementById('mensajeLogin');
+    var usernameGroup = document.getElementById('usernameGroupLogin');
+
+    var username = usernameInput.value;
+    var password = passwordInput.value;
+
+    // Verifica si el usuario existe en el almacenamiento local
+    if (localStorage.getItem(username) === password) {
+        // Muestra mensaje de éxito en verde
+        mostrarMensaje('¡Inicio de sesión exitoso!', 'alert-success', mensajeElement, usernameGroup, true);
+        // Puedes redirigir o realizar otras acciones después del inicio de sesión exitoso
+    } else {
+        // Muestra mensaje de error debajo del input de username
+        mostrarMensaje('Usuario incorrecto', 'alert-danger', mensajeElement, usernameGroup, false);
+        // Cambia el color del borde del input del usuario a rojo
+        cambiarBordeRojo(usernameInput);
+        // No cerramos el modal en caso de error
+    }
+}
+
+// Función para manejar el registro
+function registrarse() {
+    var usernameInput = document.getElementById('usernameRegister');
+    var passwordInput = document.getElementById('passwordRegister');
+    var mensajeElement = document.getElementById('mensajeRegister');
+    var usernameGroup = document.getElementById('usernameGroupRegister');
+
+    var username = usernameInput.value;
+    var password = passwordInput.value;
+
+    // Verifica si el usuario ya existe en el almacenamiento local
+    if (localStorage.getItem(username)) {
+        // Muestra mensaje de error debajo del input de username
+        mostrarMensaje('Usuario existente', 'alert-danger', mensajeElement, usernameGroup, false);
+        // Cambia el color del borde del input del usuario a rojo
+        cambiarBordeRojo(usernameInput);
+        // No cerramos el modal en caso de error
+    } else {
+        // Registra al usuario en el almacenamiento local
+        localStorage.setItem(username, password);
+        // Muestra mensaje de éxito en verde
+        mostrarMensaje('¡Registro exitoso!', 'alert-success', mensajeElement, usernameGroup, true);
+        // Puedes redirigir o realizar otras acciones después del registro exitoso
+    }
+}
+
+// Función para cambiar el borde del input a rojo
+function cambiarBordeRojo(inputElement) {
+    inputElement.style.border = '1px solid red';
+}
+
+// Función para restaurar el color del borde del input
+function restaurarColorBorde(inputElement) {
+    inputElement.style.border = '';
+}
+
+// Función para mostrar mensajes
+function mostrarMensaje(mensaje, clase, mensajeElement, inputGroup, exitoso) {
+    mensajeElement.textContent = mensaje;
+    mensajeElement.className = 'alert ' + clase;
+
+    // Cambia el color del borde del input en caso de éxito
+    if (exitoso) {
+        inputGroup.classList.add('border-success');
+    } else {
+        // Si es un mensaje de error, restaura el color del borde después de 2 segundos
+        setTimeout(function () {
+            inputGroup.classList.remove('border-success');
+        }, 2000);
+    }
+
+    // Oculta el mensaje después de 2 segundos
+    setTimeout(function () {
+        mensajeElement.textContent = '';
+        mensajeElement.className = 'alert';
+        
+        // Cierra el modal después de 2 segundos si es un mensaje de éxito
+        if (exitoso) {
+            setTimeout(function () {
+                $('#loginModal').modal('hide');
+                $('#registerModal').modal('hide');
+            }, 2000);
+        }
+    }, 2000);
+}
+
+// Event listener para el formulario de inicio de sesión
+document.getElementById('loginModal').querySelector('form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    iniciarSesion();
+});
+
+// Event listener para el formulario de registro
+document.getElementById('registerModal').querySelector('form').addEventListener('submit', function (event) {
+    event.preventDefault();
+    registrarse();
+});
