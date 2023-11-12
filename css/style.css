@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+.navbar-color {
+    background-color: #FFB6C1;
+}
+
+.header-img {
+    width: 30px; /* Ajustar según el tamaño real de tus imágenes */
+    height: 30px; /* Ajustar según el tamaño real de tus imágenes */
+}
+
+.menu_img {
+    width: 10%; /* Ajusta la imagen al 100% del contenedor */
+    height: 10%; /* Ajusta la imagen al 100% del contenedor */
+}
+
+.carousel_img {
+    height: 600px; /* Ajustar según el tamaño real de tus imágenes */
+}
+
+/* Estilos adicionales... */
+
+#user-section, #cart, #category-menu button {
+    margin-left: auto; /* Alinear a la derecha */
+}
+
+#user-section a, #cart, #category-menu button {
+    cursor: pointer;
+}
+
+#user-section a {
+    display: inline-block;
+    width: 30px; /* Ajustar según el tamaño real de tus imágenes */
+    height: 30px; /* Ajustar según el tamaño real de tus imágenes */
+    overflow: hidden; /* Asegura que el tamaño del enlace no cambie */
+    position: relative; /* Permite posicionar la imagen dentro del enlace */
+}
+
+#user-section a img {
+    width: 100%; /* Ajusta la imagen al 100% del contenedor */
+    height: 100%; /* Ajusta la imagen al 100% del contenedor */
+}
+
+#cart {
+    display: inline-block;
+    width: 30px; /* Ajustar según el tamaño real de tus imágenes */
+    height: 30px; /* Ajustar según el tamaño real de tus imágenes */
+    overflow: hidden; /* Asegura que el tamaño del enlace no cambie */
+    position: relative; /* Permite posicionar la imagen dentro del enlace */
+}
+
+#cart a img {
+    width: 100%; /* Ajusta la imagen al 100% del contenedor */
+    height: 100%; /* Ajusta la imagen al 100% del contenedor */
+}
+
+#category-menu button {
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+}
+
+#categories-list {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+#categories-list.show {
+    display: block;
+}
