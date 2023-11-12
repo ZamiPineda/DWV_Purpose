@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/style.css" rel="stylesheet">
     <link href="css-boostrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="images/logo.png" href="images/logo.png">
     <title>Tu Emprendimiento</title>
 </head>
 
@@ -17,18 +18,96 @@
             <img class="header-img" src="images/logo.png">
         </a>
         <ul class="nav justify-content-end">
-            <li class="nav-item">
+            <!-- Modal de inicio de sesión -->
+            <li class="nav-item" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
                 <a class="nav-link" href="#">Iniciar Sesión</a>
             </li>
-            <li class="nav-item">
+            <div class="modal" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Contenido del formulario de inicio de sesión -->
+                            <form>
+                                <div class="form-group">
+                                    <label for="username">Usuario:</label>
+                                    <input type="text" class="form-control" id="usernameLogin"
+                                        placeholder="Ingresa tu usuario">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Contraseña:</label>
+                                    <input type="password" class="form-control" id="passwordLogin"
+                                        placeholder="Ingresa tu contraseña">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <li class="nav-item" class="btn btn-primary" data-toggle="modal" data-target="#registerModal">
                 <a class="nav-link" href="#">Registrarse</a>
             </li>
+            <div class="modal" id="registerModal" tabindex="-1" role="dialog" aria-labelledby="registerModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="registerModalLabel">Registrarse</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Contenido del formulario de inicio de sesión -->
+                            <form>
+                                <div class="form-group">
+                                    <label for="username">Usuario:</label>
+                                    <input type="text" class="form-control" id="usernameRegister"
+                                        placeholder="Ingresa tu usuario">
+                                </div>
+                                <div class="form-group">
+                                    <label for="password">Contraseña:</label>
+                                    <input type="password" class="form-control" id="passwordRegister"
+                                        placeholder="Ingresa tu contraseña">
+                                </div>
+                                <button type="submit" class="btn btn-primary">Registrate</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <form class="form-inline">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             </form>
-            <li class="nav-item">
+            <li class="nav-item" class="btn btn-primary" data-toggle="modal" data-target="#carritoModal">
                 <a class="nav-link" href="#">Carrito</a>
             </li>
+            <div class="modal fade" id="carritoModal" tabindex="-1" role="dialog" aria-labelledby="carritoModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="carritoModalLabel">Carrito de Compras</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Lista de productos en el carrito -->
+                            <ul id="carritoLista" class="list-group">
+                                <!-- Los productos se agregarán aquí dinámicamente -->
+                            </ul>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="navbarDropdown" role="button"
                     aria-haspopup="true" aria-expanded="false">Categorias</a>
@@ -36,8 +115,6 @@
                     <a class="dropdown-item" href="#">Desayunos</a>
                     <a class="dropdown-item" href="#">Onces</a>
                     <a class="dropdown-item" href="#">Almuerzos</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
                 </div>
             </li>
         </ul>
@@ -53,13 +130,13 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100 carousel_img" src="images/ajax.jpg" alt="First slide">
+                    <img class="d-block w-100 carousel_img" src="images/postres.jpg" alt="First slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100 carousel_img" src="images/bootstrap.png" alt="Second slide">
+                    <img class="d-block w-100 carousel_img" src="images/onces-cinco.jpg" alt="Second slide">
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100 carousel_img" src="images/code.jpg" alt="Third slide">
+                    <img class="d-block w-100 carousel_img" src="images/cupcakes.jpg" alt="Third slide">
                 </div>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -72,47 +149,68 @@
             </a>
         </div><br>
         <div class="col">
-            <h2 class="text-monospace text-center">This is in monospace</h2>
+            <h2 class="text-monospace text-center">Menú</h2>
         </div><br>
         <div class="row">
-            <div class="col">col1
-                <img class="img-fluid" src="images/login.png" alt="Imagen 1">
+            <div class="col text-center">
+                <a href="#" onclick="agregarAlCarrito(this)">
+                    <img class="img-fluid" src="images/Onces1.png" alt="Onces 1">
+                </a>
+                <p class="mt-2">Postre1</p>
             </div>
-            <div class="col">col
-                <img class="img-fluid" src="images/login.png" alt="Imagen 1">
+            <div class="col text-center">
+                <a href="#" onclick="agregarAlCarrito(this)">
+                    <img class="img-fluid" src="images/Onces2.png" alt="Onces 2">
+                </a>
+                <p class="mt-2">Postre2</p>
             </div>
-            <div class="col">col
-                <img class="img-fluid" src="images/login.png" alt="Imagen 1">
+            <div class="col text-center">
+                <a href="#" onclick="agregarAlCarrito(this)">
+                    <img class="img-fluid" src="images/Onces3.png" alt="Onces 3">
+                </a>
+                <p class="mt-2">Postre3</p>
             </div>
-            <div class="col">col
-                <img class="img-fluid" src="images/login.png" alt="Imagen 1">
+            <div class="col text-center">
+                <a href="#" onclick="agregarAlCarrito(this)">
+                    <img class="img-fluid" src="images/Onces4.png" alt="Onces 4">
+                </a>
+                <p class="mt-2">Postre4</p>
             </div>
         </div><br>
         <div class="row">
-            <div class="col">col1
-                <img class="img-fluid" src="images/login.png" alt="Imagen 1">
+            <div class="col text-center">
+                <a href="#" onclick="agregarAlCarrito(this)">
+                    <img class="img-fluid" src="images/Onces5.png" alt="Onces 5">
+                </a>
+                <p class="mt-2">Postre5</p>
             </div>
-            <div class="col">col
-                <img class="img-fluid" src="images/login.png" alt="Imagen 1">
+            <div class="col text-center">
+                <a href="#" onclick="agregarAlCarrito(this)">
+                    <img class="img-fluid" src="images/Onces6.png" alt="Onces 6">
+                </a>
             </div>
-            <div class="col">col
-                <img class="img-fluid" src="images/login.png" alt="Imagen 1">
+            <div class="col text-center">
+                <a href="#" onclick="agregarAlCarrito(this)">
+                    <img class="img-fluid" src="images/Onces7.png" alt="Onces 7">
+                </a>
             </div>
-            <div class="col">col
-                <img class="img-fluid" src="images/login.png" alt="Imagen 1">
+            <div class="col text-center">
+                <a href="#" onclick="agregarAlCarrito(this)">
+                    <img class="img-fluid" src="images/Onces8.png" alt="Onces 8">
+                </a>
             </div>
         </div><br>
         <div class="col">
-            <h2 class="text-monospace text-center">This is in monospace</h2>
+            <h2 class="text-monospace text-center">Sobre nosotros</h2>
         </div><br>
         <div class="row">
-            <div class="col d-flex align-items-center justify-content-center">col1
+            <div class="col d-flex align-items-center justify-content-center">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/kN1SRWa2ODY?si=ly_pIaKWjGtg0ggQ"
                     title="YouTube video player" frameborder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowfullscreen></iframe>
             </div>
-            <div class="col d-flex align-items-center justify-content-center">col
+            <div class="col d-flex align-items-center justify-content-center">
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.611514523974!2d-74.05768862398186!3d4.663154841979761!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a433607e0cd%3A0x7f49014fe7203f21!2sUniversidad%20Ean!5e0!3m2!1ses!2sco!4v1699810883768!5m2!1ses!2sco"
                     width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
@@ -120,6 +218,25 @@
             </div>
         </div>
         </div><br>
+        <div class="modal fade" id="agregadoModal" tabindex="-1" role="dialog" aria-labelledby="agregadoModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="agregadoModalLabel">¡Agregado al carrito!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Contenido del modal -->
+                        El <span id="modalPostreNombre"></span> ha sido agregado al carrito.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main><br>
 
     <!-- Footer -->
