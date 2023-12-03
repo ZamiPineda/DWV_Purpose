@@ -81,18 +81,36 @@ function iniciarSesion() {
     var username = usernameInput.value;
     var password = passwordInput.value;
 
-    // Verifica si el usuario existe en el almacenamiento local
-    if (localStorage.getItem(username) === password) {
-        // Muestra mensaje de éxito en verde
-        mostrarMensaje('¡Inicio de sesión exitoso!', 'alert-success', mensajeElement, usernameGroup, true);
-        // Puedes redirigir o realizar otras acciones después del inicio de sesión exitoso
-    } else {
-        // Muestra mensaje de error debajo del input de username
-        mostrarMensaje('Usuario incorrecto', 'alert-danger', mensajeElement, usernameGroup, false);
-        // Cambia el color del borde del input del usuario a rojo
-        cambiarBordeRojo(usernameInput);
-        // No cerramos el modal en caso de error
-    }
+    const loginUrl = '/DWV_Purpose/php/login.php';
+    // Enviar los datos al servidor PHP para verificar el inicio de sesión
+    // Puedes usar fetch() o AJAX para enviar una solicitud POST a tu script PHP
+    fetch(loginUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            username: username,
+            password: password,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Muestra mensaje de éxito en verde
+            mostrarMensaje('¡Inicio de sesión exitoso!', 'alert-success', mensajeElement, usernameGroup, true);
+            // Puedes redirigir o realizar otras acciones después del inicio de sesión exitoso
+        } else {
+            // Muestra mensaje de error debajo del input de username
+            mostrarMensaje('Usuario incorrecto', 'alert-danger', mensajeElement, usernameGroup, false);
+            // Cambia el color del borde del input del usuario a rojo
+            cambiarBordeRojo(usernameInput);
+            // No cerramos el modal en caso de error
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 // Función para manejar el registro
@@ -105,20 +123,36 @@ function registrarse() {
     var username = usernameInput.value;
     var password = passwordInput.value;
 
-    // Verifica si el usuario ya existe en el almacenamiento local
-    if (localStorage.getItem(username)) {
-        // Muestra mensaje de error debajo del input de username
-        mostrarMensaje('Usuario existente', 'alert-danger', mensajeElement, usernameGroup, false);
-        // Cambia el color del borde del input del usuario a rojo
-        cambiarBordeRojo(usernameInput);
-        // No cerramos el modal en caso de error
-    } else {
-        // Registra al usuario en el almacenamiento local
-        localStorage.setItem(username, password);
-        // Muestra mensaje de éxito en verde
-        mostrarMensaje('¡Registro exitoso!', 'alert-success', mensajeElement, usernameGroup, true);
-        // Puedes redirigir o realizar otras acciones después del registro exitoso
-    }
+    const registerUrl = '/DWV_Purpose/php/register.php';
+   // Enviar los datos al servidor PHP para realizar el registro
+    // Puedes usar fetch() o AJAX para enviar una solicitud POST a tu script PHP
+    fetch(registerUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            username: username,
+            password: password,
+        }),
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Muestra mensaje de éxito en verde
+            mostrarMensaje('¡Registro exitoso!', 'alert-success', mensajeElement, usernameGroup, true);
+            // Puedes redirigir o realizar otras acciones después del registro exitoso
+        } else {
+            // Muestra mensaje de error debajo del input de username
+            mostrarMensaje('Usuario existente', 'alert-danger', mensajeElement, usernameGroup, false);
+            // Cambia el color del borde del input del usuario a rojo
+            cambiarBordeRojo(usernameInput);
+            // No cerramos el modal en caso de error
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 }
 
 // Función para cambiar el borde del input a rojo
